@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<item>
+    <layer-list>
+        <item>
+            <shape android:shape="rectangle">
+                <solid android:color="#CEE3F1"/>
+                <padding android:left="12dp"
+                    android:right="12dp"/>
+                <corners android:radius="8dp"/>
+
+                <padding
+                    android:bottom="2dp"
+                    android:left="16dp"
+                    android:right="16dp"
+                    android:top="2dp" />
+                <stroke
+                    android:width="2dp"
+                    android:color="@color/cardview_shadow_start_color"/>
+
+            </shape>
+        </item>
+
+        <item
+            android:drawable="@drawable/sp_arrow"
+            android:gravity="right"/>
+
+        </layer-list>
+     </item>
+</selector>
