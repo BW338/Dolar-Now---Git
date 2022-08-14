@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/calculadora"
+        android:enabled="true"
+        android:icon="@drawable/calcular"
+        android:title=""
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/refresh"
+        android:title=""
+        android:enabled="true"
+        android:icon="@drawable/refresh"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/sonido"
+        android:enabled="true"
+        android:icon="@drawable/sound_on"
+        android:title=""
+        app:showAsAction="ifRoom" />
+
+
+</menu>
