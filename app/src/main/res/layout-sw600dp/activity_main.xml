@@ -368,7 +368,7 @@
 
             <TextView
                 android:id="@+id/dl"
-                android:layout_width="92dp"
+                android:layout_width="93dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="75dp"
                 android:layout_weight="1"
@@ -385,6 +385,59 @@
                 android:layout_gravity="center"
                 android:layout_marginVertical="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:text="$000.00"
+                android:textColor="@color/black"
+                android:textSize="36dp"
+                android:textStyle="bold" />
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView6"
+            android:layout_width="568dp"
+            android:layout_height="87dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="@color/celestito"
+            app:cardCornerRadius="25dp"
+            app:layout_constraintBottom_toTopOf="@+id/cardView3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+
+            <ImageView
+                android:id="@+id/dltarj"
+                android:layout_width="59dp"
+                android:layout_height="47dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="18dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+                app:srcCompat="@drawable/credit" />
+
+            <TextView
+                android:id="@+id/dt"
+                android:layout_width="178dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="75dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:text="Tarjeta"
+                android:textColor="@color/black"
+                android:textSize="36dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dlt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="90dp"
                 android:layout_weight="1"
                 android:text="$000.00"
                 android:textColor="@color/black"

@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.example.dolarnow.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.Objects;
@@ -30,11 +31,11 @@ public class MainActivity extends AppCompatActivity {
 
     TextView dn, datodb, datodn, datoda, datodm, datodl,sonof;
     TextView dnc, dac, dbc, dlc, dmc, dmv;
-    TextView dnv, dav, dbv, dlv;
+    TextView dnv, dav, dbv, dlv,dlt;
     TextView tituloa, titulob, titulo;
     TextView hora;
     String horatx, flechadb, flechadn, flechada, flechadm, flechadl;
-    String dnctx, dnvtx, davtx, dbctx, dbvtx, dlctx, dlvtx, dmctx, dmvtx, s_on_off;
+    String dnctx, dnvtx, davtx, dbctx, dbvtx, dlctx, dlvtx, dmctx, dmvtx,dltjtx, s_on_off;
     Button enter, button;
     Bitmap bitmap;
     ImageView mImageView;
@@ -82,16 +83,18 @@ public class MainActivity extends AppCompatActivity {
         dmc = findViewById(R.id.dmc);
         dmv = findViewById(R.id.dmv);
 
+        dlt = findViewById(R.id.dlt);
+
         enter = findViewById(R.id.enter);
 
         tituloa = findViewById(R.id.tituloa);
         titulob = findViewById(R.id.titulob);
 
-        datodb = findViewById(R.id.dbflecha);
-        datodn = findViewById(R.id.dnflecha);
-        datoda = findViewById(R.id.daflecha);
-        datodm = findViewById(R.id.dmflecha);
-        datodl = findViewById(R.id.dlflecha);
+       // datodb = findViewById(R.id.dbflecha);
+       // datodn = findViewById(R.id.dnflecha);
+       // datoda = findViewById(R.id.daflecha);
+       // datodm = findViewById(R.id.dmflecha);
+       // datodl = findViewById(R.id.dlflecha);
 
         titulo = findViewById(R.id.textView);
 
@@ -136,6 +139,8 @@ public class MainActivity extends AppCompatActivity {
 
                         dmc.setText(dmctx);
                         dmv.setText(dmvtx);
+
+                        dlt.setText(dltjtx);
 
                         tituloa.setText("DolarNow | ");
                         titulob.setText("valor al: " + horatx);
@@ -241,6 +246,9 @@ public class MainActivity extends AppCompatActivity {
 
                                         dmc.setText(dmctx);
                                         dmv.setText(dmvtx);
+
+                                        dlt.setText(dltjtx);
+
 
                                     } switch (activeNetwork.getType()) {
                                         case ConnectivityManager.TYPE_WIFI:
@@ -372,6 +380,7 @@ public class MainActivity extends AppCompatActivity {
                 org.jsoup.nodes.Document documento6c = null;
                 org.jsoup.nodes.Document documento7 = null;
                 org.jsoup.nodes.Document documento8 = null;
+                org.jsoup.nodes.Document documento9 = null;
 
 
                 try {
@@ -385,8 +394,10 @@ public class MainActivity extends AppCompatActivity {
                     documento5 = Jsoup.connect("https://www.ambito.com/contenidos/dolar.html").get();
                     documento6 = Jsoup.connect("https://www.cronista.com/MercadosOnline/dolar.html").get();
                     documento8 = Jsoup.connect("https://www.cronista.com/MercadosOnline/moneda.html?id=ARSMEP0").get();
+                    documento9 = Jsoup.connect("https://www.cronista.com/MercadosOnline/moneda.html?id=ARSTAR").get();
                     documento6b = Jsoup.connect("https://www.cronista.com/MercadosOnline/moneda.html?id=ARSB").get();
                     documento6c = Jsoup.connect("https://news.agrofy.com.ar/economia-politica/dolar").get();
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -408,15 +419,16 @@ public class MainActivity extends AppCompatActivity {
 
                 Elements dato5 = documento2.select("td.date");
 
-                Elements fldb = documento6.select("span.percentage.up.col");
-                Elements fldn = documento6.select("td.percentage.up");
-                Elements fldm = documento8.select("td.percentage.down");
-                Elements fldl = documento6c.select("div.down-icon.arrow.tab-item.d-flex.var-item");
+               // Elements fldb = documento6.select("span.percentage.up.col");
+               // Elements fldn = documento6.select("td.percentage.up");
+               // Elements fldm = documento8.select("td.percentage.down");
+               // Elements fldl = documento6c.select("div.down-icon.arrow.tab-item.d-flex.var-item");
 
 
                 Elements dato11 = documento7.select("div.buy-value");
                 Elements dato12 = documento7.select("div.sell-value");
 
+                Elements dato13 = documento9.select("div.sell-value");
 
                 dnctx = dato1.text();
                 dnvtx = dato2.text();
@@ -448,17 +460,21 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     horatx = ("Error de conexion");
                 }
+                ////////////////////////////
+
+                dltjtx = dato13.text();
 
 
-                flechadb = fldb.text();
-                if (fldb.isEmpty()) {
-                    Elements fldb1 = documento6b.select("span.percentage.down.col");
-                    flechadb = fldb1.text();
-                }
+
+              //  flechadb = fldb.text();
+              //  if (fldb.isEmpty()) {
+              //      Elements fldb1 = documento6b.select("span.percentage.down.col");
+              //      flechadb = fldb1.text();
+              //  }
             //    flechadn = fldn.text().substring(0, 6);
-                flechada = fldn.text();
-                flechadm = fldm.text();
-                flechadl = fldl.text();
+            //    flechada = fldn.text();
+            //    flechadm = fldm.text();
+            //    flechadl = fldl.text();
 
                 return null;
             }

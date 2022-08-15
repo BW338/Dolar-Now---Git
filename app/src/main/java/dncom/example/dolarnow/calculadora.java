@@ -32,8 +32,8 @@ import java.text.DecimalFormat;
 public class calculadora extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Spinner tipo;
-    String dbctx, dbvtx, dnctx, dnvtx, dlctx, dlvtx, dmctx, dmvtx,
-            datx, horatx, Ndbc, Ndbv, Nda, Ndnc, Ndnv, Ndmc, Ndmv, Ndlc, Ndlv, s1_on_off;
+    String dbctx, dbvtx, dnctx, dnvtx, dlctx, dlvtx, dmctx, dmvtx,dltjtx,
+            datx, horatx, Ndbc, Ndbv, Nda, Ndnc, Ndnv, Ndmc, Ndmv, Ndlc, Ndlv,Ndtj, s1_on_off;
     TextView montodlbl, hora, valor, marg, musa, mres, minput, tituloa, titulob, titulo;
     EditText input;
     BottomNavigationView bottomNavigationView2;
