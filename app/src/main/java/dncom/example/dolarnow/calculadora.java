@@ -84,7 +84,7 @@ public class calculadora extends AppCompatActivity implements AdapterView.OnItem
         touch = new SoundPool(1, AudioManager.STREAM_MUSIC, 1);
         sound = touch.load(this, R.raw.touch, 1);
 
-        String[] cambio = {"Tipo de cambio", "Dolar Blue", "Dolar Nacion", "Dolar Ahorro", "Dolar Mep", "Dolar cdo. liqui"};
+        String[] cambio = {"Tipo de cambio", "Dolar Blue", "Dolar Nacion", "Dolar Ahorro", "Dolar Mep", "Dolar cdo. liqui","Dolar Tarjeta"};
         ArrayAdapter<String> adaptador1 = new ArrayAdapter<>(this, R.layout.spinner, cambio);
         tipo.setAdapter(adaptador1);
 
@@ -143,9 +143,10 @@ public class calculadora extends AppCompatActivity implements AdapterView.OnItem
 
                                         if (tipo.getSelectedItem() == "Tipo de cambio") {
                                             Toast.makeText(calculadora.this, "Selecciona tipo de cambio", Toast.LENGTH_SHORT).show();
-                                        }
-                                        if (tipo.getSelectedItem() == "Dolar Blue") {
 
+
+
+                                        }if (tipo.getSelectedItem() == "Dolar Blue") {
                                             if (chg % 2 == 0) {
                                                 double Ddbv = Double.parseDouble(Ndbv.replace(",", "."));
                                                 int Ninput = parseInt(input.getText().toString());
@@ -165,8 +166,7 @@ public class calculadora extends AppCompatActivity implements AdapterView.OnItem
                                                 valor.setText(DRdbcd);
                                             }
 
-                                        }
-                                        if (tipo.getSelectedItem() == "Dolar Ahorro") {
+                                        }if (tipo.getSelectedItem() == "Dolar Ahorro") {
 
                                             if (chg % 2 == 0) {
                                                 double Ddav = Double.parseDouble(Nda.replace(",", "."));
@@ -248,6 +248,7 @@ public class calculadora extends AppCompatActivity implements AdapterView.OnItem
                                                 DecimalFormat df = new DecimalFormat("###,###.##");
                                                 String DRdlcd = df.format(DRdlc);
                                                 valor.setText(DRdlcd);
+
                                             }
                                         }
                                     }
@@ -407,6 +408,26 @@ public class calculadora extends AppCompatActivity implements AdapterView.OnItem
                                     String DRdlcd = df.format(DRdlc);
                                     valor.setText(DRdlcd);
                                 }
+                            }  if (tipo.getSelectedItem() == "Dolar Tarjeta") {
+
+                                if (chg % 2 == 0) {
+                                    double Ddltj = Double.parseDouble(Ndtj.replace(",", "."));
+                                    int Ninput = parseInt(input.getText().toString());
+                                    double Cdltj = (Ninput / Ddltj);
+                                    double DRdtj = Double.parseDouble(String.valueOf(Cdltj));
+                                    DecimalFormat df = new DecimalFormat("###,###.##");
+                                    String DRdltj = df.format(DRdtj);
+                                    valor.setText(DRdltj);
+
+                                } else {
+                                    double Ddltj = Double.parseDouble(Ndtj.replace(",", "."));
+                                    int Ninput = parseInt(input.getText().toString());
+                                    double Cdltj = (Ninput * Ddltj);
+                                    double DRdtj = Double.parseDouble(String.valueOf(Cdltj));
+                                    DecimalFormat df = new DecimalFormat("###,###.##");
+                                    String DRdltj = df.format(DRdtj);
+                                    valor.setText(DRdltj);
+                                }
                             }
                         }
                     } else {
@@ -446,6 +467,8 @@ public class calculadora extends AppCompatActivity implements AdapterView.OnItem
                 org.jsoup.nodes.Document documento6 = null;
                 org.jsoup.nodes.Document documento7 = null;
 
+                org.jsoup.nodes.Document documento9 = null;
+
 
 
                 try {
@@ -457,6 +480,8 @@ public class calculadora extends AppCompatActivity implements AdapterView.OnItem
                     documento5 = Jsoup.connect("https://www.ambito.com/contenidos/dolar.html").get();
                     documento6 = Jsoup.connect("https://www.cronista.com/MercadosOnline/dolar.html").get();
                     documento7 = Jsoup.connect("https://www.cronista.com/MercadosOnline/moneda.html?id=ARSMEP0").get();
+
+                    documento9 = Jsoup.connect("https://www.cronista.com/MercadosOnline/moneda.html?id=ARSTAR").get();
 
 
 
@@ -482,7 +507,12 @@ public class calculadora extends AppCompatActivity implements AdapterView.OnItem
 
                 Elements dato10 = documento2.select("td.date");
 
-            ////DOLAR AHORRO
+
+
+                Elements dato13 = documento9.select("div.sell-value");
+
+
+                ////DOLAR AHORRO
                 if(dato9 != null) {
                     datx = dato9.text();
                     Nda = datx.substring(1,7);
@@ -564,6 +594,9 @@ public class calculadora extends AppCompatActivity implements AdapterView.OnItem
                    horatx = ("Error de conexion");
                }
 
+               dltjtx = dato13.text();
+               Ndtj = dltjtx.substring(1,7);
+
             }
             return null;
         }
@@ -578,184 +611,219 @@ public class calculadora extends AppCompatActivity implements AdapterView.OnItem
 
             case 0:
 
-                montodlbl.setText( "$000,00 - $000,00" );
+                montodlbl.setText("$000,00 - $000,00");
                 valor.setText("000,00");
 
 
                 break;
             case 1:
-                if(on_off %2 == 0) {
+                if (on_off % 2 == 0) {
                     touch.play(sound, 1, 1, 1, 0, 0);
                 }
-             if (AppStatus.getInstance(calculadora.this).isOnline()) {
+                if (AppStatus.getInstance(calculadora.this).isOnline()) {
 
-                 new Content().execute();
-                 montodlbl.setText(dbctx + " - " + dbvtx);
+                    new Content().execute();
+                    montodlbl.setText(dbctx + " - " + dbvtx);
 
-                 tituloa.setText("DolarNow | ");
-                 titulob.setText("valor al: " + horatx);
+                    tituloa.setText("DolarNow | ");
+                    titulob.setText("valor al: " + horatx);
 
-                 if (!input.getText().toString().equals("")) {
-                     if (chg % 2 == 0) {
-                         double Ddbv = Double.parseDouble(Ndbv.replace(",", "."));
-                         int Ninput = parseInt(input.getText().toString());
-                         double Cdbv = (Ninput / Ddbv);
-                         double DRdbv = Double.parseDouble(String.valueOf(Cdbv));
-                         DecimalFormat df = new DecimalFormat("###,###.##");
-                         String DRdbvd = df.format(DRdbv);
-                         valor.setText(DRdbvd);
+                    if (!input.getText().toString().equals("")) {
+                        if (chg % 2 == 0) {
+                            double Ddbv = Double.parseDouble(Ndbv.replace(",", "."));
+                            int Ninput = parseInt(input.getText().toString());
+                            double Cdbv = (Ninput / Ddbv);
+                            double DRdbv = Double.parseDouble(String.valueOf(Cdbv));
+                            DecimalFormat df = new DecimalFormat("###,###.##");
+                            String DRdbvd = df.format(DRdbv);
+                            valor.setText(DRdbvd);
 
-                     } else {
-                         double Ddbc = Double.parseDouble(Ndbc.replace(",", "."));
-                         int Ninput = parseInt(input.getText().toString());
-                         double Cdbc = (Ninput * Ddbc);
-                         double DRdbc = Double.parseDouble(String.valueOf(Cdbc));
-                         DecimalFormat df = new DecimalFormat("###,###.##");
-                         String DRdbcd = df.format(DRdbc);
-                         valor.setText(DRdbcd);
-                     }
-                 }
-             }else{
-                 Toast.makeText(calculadora.this,"SIN CONEXION A INTERNET", Toast.LENGTH_SHORT).show();
-             }
-                    break;
-
-                case 2:
-                    if(on_off %2 == 0) {
-                        touch.play(sound, 1, 1, 1, 0, 0);
-                    }                    if (AppStatus.getInstance(calculadora.this).isOnline()) {
-                        new Content().execute();
-                        montodlbl.setText(dnctx + " - " + dnvtx);
-                        tituloa.setText("DolarNow | ");
-                        titulob.setText("valor al: " + horatx);
-
-                        if (!input.getText().toString().equals("")) {
-                            if (chg % 2 == 0) {
-                                double Ddnv = Double.parseDouble(Ndnv.replace(",", "."));
-                                int Ninput = parseInt(input.getText().toString());
-                                double Cdnv = (Ninput / Ddnv);
-                                double DRdnv = Double.parseDouble(String.valueOf(Cdnv));
-                                DecimalFormat df = new DecimalFormat("###,###.##");
-                                String DRdnvd = df.format(DRdnv);
-                                valor.setText(DRdnvd);
-
-                            } else {
-                                double Ddnc = Double.parseDouble(Ndnc.replace(",", "."));
-                                int Ninput = parseInt(input.getText().toString());
-                                double Cdnc = (Ninput * Ddnc);
-                                double DRdnc = Double.parseDouble(String.valueOf(Cdnc));
-                                DecimalFormat df = new DecimalFormat("###,###.##");
-                                String DRdncd = df.format(DRdnc);
-                                valor.setText(DRdncd);
-                            }
+                        } else {
+                            double Ddbc = Double.parseDouble(Ndbc.replace(",", "."));
+                            int Ninput = parseInt(input.getText().toString());
+                            double Cdbc = (Ninput * Ddbc);
+                            double DRdbc = Double.parseDouble(String.valueOf(Cdbc));
+                            DecimalFormat df = new DecimalFormat("###,###.##");
+                            String DRdbcd = df.format(DRdbc);
+                            valor.setText(DRdbcd);
                         }
-                    }else{
-                        Toast.makeText(calculadora.this,"SIN CONEXION A INTERNET", Toast.LENGTH_SHORT).show();
                     }
+                } else {
+                    Toast.makeText(calculadora.this, "SIN CONEXION A INTERNET", Toast.LENGTH_SHORT).show();
+                }
+                break;
 
-                    break;
-
-                case 3:
-                    if(on_off %2 == 0) {
-                        touch.play(sound, 1, 1, 1, 0, 0);
-                    }
-                    if (AppStatus.getInstance(calculadora.this).isOnline()) {
-                        montodlbl.setText(datx);
-                        tituloa.setText("DolarNow | ");
-                        titulob.setText("valor al: " + horatx);
-
-                        if (!input.getText().toString().equals("")) {
-                            if (chg % 2 == 0) {
-                                double Ddav = Double.parseDouble(Nda.replace(",", "."));
-                                int Ninput = parseInt(input.getText().toString());
-                                double Cdav = (Ninput / Ddav);
-                                double DRdav = Double.parseDouble(String.valueOf(Cdav));
-                                DecimalFormat df2 = new DecimalFormat("###,###.##");
-                                String DRdavd = df2.format(DRdav);
-                                valor.setText(DRdavd);
-                            } else {
-                                double Ddav = Double.parseDouble(Nda.replace(",", "."));
-                                int Ninput = parseInt(input.getText().toString());
-                                double Cdav = (Ninput * Ddav);
-                                double DRdav = Double.parseDouble(String.valueOf(Cdav));
-                                DecimalFormat df2 = new DecimalFormat("###,###.##");
-                                String DRdavd = df2.format(DRdav);
-                                valor.setText(DRdavd);
-
-                            }
-                        }
-                    }else{
-                        Toast.makeText(calculadora.this,"SIN CONEXION A INTERNET", Toast.LENGTH_SHORT).show();
-                    }
-                    break;
-
-                case 4:
+            case 2:
+                if (on_off % 2 == 0) {
                     touch.play(sound, 1, 1, 1, 0, 0);
+                }
+                if (AppStatus.getInstance(calculadora.this).isOnline()) {
+                    new Content().execute();
+                    montodlbl.setText(dnctx + " - " + dnvtx);
+                    tituloa.setText("DolarNow | ");
+                    titulob.setText("valor al: " + horatx);
 
-                    if (AppStatus.getInstance(calculadora.this).isOnline()) {
+                    if (!input.getText().toString().equals("")) {
+                        if (chg % 2 == 0) {
+                            double Ddnv = Double.parseDouble(Ndnv.replace(",", "."));
+                            int Ninput = parseInt(input.getText().toString());
+                            double Cdnv = (Ninput / Ddnv);
+                            double DRdnv = Double.parseDouble(String.valueOf(Cdnv));
+                            DecimalFormat df = new DecimalFormat("###,###.##");
+                            String DRdnvd = df.format(DRdnv);
+                            valor.setText(DRdnvd);
 
-                        montodlbl.setText(dmctx + " - " + dmvtx);
-                        tituloa.setText("DolarNow | ");
-                        titulob.setText("valor al: " + horatx);
-
-                        if (!input.getText().toString().equals("")) {
-                            if (chg % 2 == 0) {
-                                double Ddmv = Double.parseDouble(Ndmv.replace(",", "."));
-                                int Ninput = parseInt(input.getText().toString());
-                                double Cdnv = (Ninput / Ddmv);
-                                double DRdmv = Double.parseDouble(String.valueOf(Cdnv));
-                                DecimalFormat df = new DecimalFormat("###,###.##");
-                                String DRdmvd = df.format(DRdmv);
-                                valor.setText(DRdmvd);
-                            } else {
-                                double Ddmc = Double.parseDouble(Ndmc.replace(",", "."));
-                                int Ninput = parseInt(input.getText().toString());
-                                double Cdnc = (Ninput * Ddmc);
-                                double DRdmc = Double.parseDouble(String.valueOf(Cdnc));
-                                DecimalFormat df = new DecimalFormat("###,###.##");
-                                String DRdmcd = df.format(DRdmc);
-                                valor.setText(DRdmcd);
-                            }
+                        } else {
+                            double Ddnc = Double.parseDouble(Ndnc.replace(",", "."));
+                            int Ninput = parseInt(input.getText().toString());
+                            double Cdnc = (Ninput * Ddnc);
+                            double DRdnc = Double.parseDouble(String.valueOf(Cdnc));
+                            DecimalFormat df = new DecimalFormat("###,###.##");
+                            String DRdncd = df.format(DRdnc);
+                            valor.setText(DRdncd);
                         }
-                    }else{
-                        Toast.makeText(calculadora.this,"SIN CONEXION A INTERNET", Toast.LENGTH_SHORT).show();
                     }
-                    break;
+                } else {
+                    Toast.makeText(calculadora.this, "SIN CONEXION A INTERNET", Toast.LENGTH_SHORT).show();
+                }
 
-                case 5:
+                break;
+
+            case 3:
+                if (on_off % 2 == 0) {
                     touch.play(sound, 1, 1, 1, 0, 0);
-                    if (AppStatus.getInstance(calculadora.this).isOnline()) {
-                        montodlbl.setText(dlctx + " - " + dlvtx);
-                        tituloa.setText("DolarNow | ");
-                        titulob.setText("valor al: " + horatx);
+                }
+                if (AppStatus.getInstance(calculadora.this).isOnline()) {
+                    montodlbl.setText(datx);
+                    tituloa.setText("DolarNow | ");
+                    titulob.setText("valor al: " + horatx);
 
-                        if (!input.getText().toString().equals("")) {
-                            if (chg % 2 == 0) {
-                                double Ddlv = Double.parseDouble(Ndlv.replace(",", "."));
-                                int Ninput = parseInt(input.getText().toString());
-                                double Cdlv = (Ninput / Ddlv);
-                                double DRdlv = Double.parseDouble(String.valueOf(Cdlv));
-                                DecimalFormat df = new DecimalFormat("###,###.##");
-                                String DRdlvd = df.format(DRdlv);
-                                valor.setText(DRdlvd);
-                            } else {
-                                double Ddlc = Double.parseDouble(Ndlc.replace(",", "."));
-                                int Ninput = parseInt(input.getText().toString());
-                                double Cdlc = (Ninput * Ddlc);
-                                double DRdlc = Double.parseDouble(String.valueOf(Cdlc));
-                                DecimalFormat df = new DecimalFormat("###,###.##");
-                                String DRdlcd = df.format(DRdlc);
-                                valor.setText(DRdlcd);
-                            }
+                    if (!input.getText().toString().equals("")) {
+                        if (chg % 2 == 0) {
+                            double Ddav = Double.parseDouble(Nda.replace(",", "."));
+                            int Ninput = parseInt(input.getText().toString());
+                            double Cdav = (Ninput / Ddav);
+                            double DRdav = Double.parseDouble(String.valueOf(Cdav));
+                            DecimalFormat df2 = new DecimalFormat("###,###.##");
+                            String DRdavd = df2.format(DRdav);
+                            valor.setText(DRdavd);
+                        } else {
+                            double Ddav = Double.parseDouble(Nda.replace(",", "."));
+                            int Ninput = parseInt(input.getText().toString());
+                            double Cdav = (Ninput * Ddav);
+                            double DRdav = Double.parseDouble(String.valueOf(Cdav));
+                            DecimalFormat df2 = new DecimalFormat("###,###.##");
+                            String DRdavd = df2.format(DRdav);
+                            valor.setText(DRdavd);
+
                         }
-                    }else{
-                        Toast.makeText(calculadora.this,"SIN CONEXION A INTERNET", Toast.LENGTH_SHORT).show();
                     }
-                    break;
+                } else {
+                    Toast.makeText(calculadora.this, "SIN CONEXION A INTERNET", Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case 4:
+                touch.play(sound, 1, 1, 1, 0, 0);
+
+                if (AppStatus.getInstance(calculadora.this).isOnline()) {
+
+                    montodlbl.setText(dmctx + " - " + dmvtx);
+                    tituloa.setText("DolarNow | ");
+                    titulob.setText("valor al: " + horatx);
+
+                    if (!input.getText().toString().equals("")) {
+                        if (chg % 2 == 0) {
+                            double Ddmv = Double.parseDouble(Ndmv.replace(",", "."));
+                            int Ninput = parseInt(input.getText().toString());
+                            double Cdnv = (Ninput / Ddmv);
+                            double DRdmv = Double.parseDouble(String.valueOf(Cdnv));
+                            DecimalFormat df = new DecimalFormat("###,###.##");
+                            String DRdmvd = df.format(DRdmv);
+                            valor.setText(DRdmvd);
+                        } else {
+                            double Ddmc = Double.parseDouble(Ndmc.replace(",", "."));
+                            int Ninput = parseInt(input.getText().toString());
+                            double Cdnc = (Ninput * Ddmc);
+                            double DRdmc = Double.parseDouble(String.valueOf(Cdnc));
+                            DecimalFormat df = new DecimalFormat("###,###.##");
+                            String DRdmcd = df.format(DRdmc);
+                            valor.setText(DRdmcd);
+                        }
+                    }
+                } else {
+                    Toast.makeText(calculadora.this, "SIN CONEXION A INTERNET", Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case 5:
+                touch.play(sound, 1, 1, 1, 0, 0);
+                if (AppStatus.getInstance(calculadora.this).isOnline()) {
+                    montodlbl.setText(dlctx + " - " + dlvtx);
+                    tituloa.setText("DolarNow | ");
+                    titulob.setText("valor al: " + horatx);
+
+                    if (!input.getText().toString().equals("")) {
+                        if (chg % 2 == 0) {
+                            double Ddlv = Double.parseDouble(Ndlv.replace(",", "."));
+                            int Ninput = parseInt(input.getText().toString());
+                            double Cdlv = (Ninput / Ddlv);
+                            double DRdlv = Double.parseDouble(String.valueOf(Cdlv));
+                            DecimalFormat df = new DecimalFormat("###,###.##");
+                            String DRdlvd = df.format(DRdlv);
+                            valor.setText(DRdlvd);
+                        } else {
+                            double Ddlc = Double.parseDouble(Ndlc.replace(",", "."));
+                            int Ninput = parseInt(input.getText().toString());
+                            double Cdlc = (Ninput * Ddlc);
+                            double DRdlc = Double.parseDouble(String.valueOf(Cdlc));
+                            DecimalFormat df = new DecimalFormat("###,###.##");
+                            String DRdlcd = df.format(DRdlc);
+                            valor.setText(DRdlcd);
+                        }
+                    }
+                } else {
+                    Toast.makeText(calculadora.this, "SIN CONEXION A INTERNET", Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case 6:
+
+                touch.play(sound, 1, 1, 1, 0, 0);
+                if (AppStatus.getInstance(calculadora.this).isOnline()) {
+                    montodlbl.setText(dltjtx);
+                    tituloa.setText("DolarNow | ");
+                    titulob.setText("valor al: " + horatx);
+
+                    if (!input.getText().toString().equals("")) {
+
+                        if (chg % 2 == 0) {
+                            double Ddltj = Double.parseDouble(Ndtj.replace(",", "."));
+                            int Ninput = parseInt(input.getText().toString());
+                            double Cdltj = (Ninput / Ddltj);
+                            double DRdtj = Double.parseDouble(String.valueOf(Cdltj));
+                            DecimalFormat df = new DecimalFormat("###,###.##");
+                            String DRdltj = df.format(DRdtj);
+                            valor.setText(DRdltj);
+
+                        } else {
+                            double Ddltj = Double.parseDouble(Ndtj.replace(",", "."));
+                            int Ninput = parseInt(input.getText().toString());
+                            double Cdltj = (Ninput * Ddltj);
+                            double DRdtj = Double.parseDouble(String.valueOf(Cdltj));
+                            DecimalFormat df = new DecimalFormat("###,###.##");
+                            String DRdltj = df.format(DRdtj);
+                            valor.setText(DRdltj);
+                        }
+                    }
+                } else {
+                    Toast.makeText(calculadora.this, "SIN CONEXION A INTERNET", Toast.LENGTH_SHORT).show();
+                }
+
+                break;
 
         }
     }
-
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
@@ -817,7 +885,16 @@ public class calculadora extends AppCompatActivity implements AdapterView.OnItem
                 DecimalFormat df = new DecimalFormat("###,###.##");
                 String DRdacd = df.format(DRdac);
                 valor.setText(DRdacd);
-            }
+
+            }if(tipo.getSelectedItem().equals("Dolar Tarjeta") &&  !input.getText().toString().equals("")  && Ndtj !=null){
+            double Ddltj = Double.parseDouble(Ndtj.replace(",", "."));
+            int Ninput = parseInt(input.getText().toString());
+            double Cdltj = (Ninput * Ddltj);
+            double DRdtj = Double.parseDouble(String.valueOf(Cdltj));
+            DecimalFormat df = new DecimalFormat("###,###.##");
+            String DRdltj = df.format(DRdtj);
+            valor.setText(DRdltj);
+        }
             chg++;
 
         }else {
@@ -872,6 +949,15 @@ public class calculadora extends AppCompatActivity implements AdapterView.OnItem
                 DecimalFormat df = new DecimalFormat("###,###.##");
                 String DRdacd = df.format(DRdac);
                 valor.setText(DRdacd);
+
+            }if(tipo.getSelectedItem().equals("Dolar Tarjeta") &&  !input.getText().toString().equals("")  && Ndtj !=null){
+                double Ddltj = Double.parseDouble(Ndtj.replace(",", "."));
+                int Ninput = parseInt(input.getText().toString());
+                double Cdltj = (Ninput / Ddltj);
+                double DRdtj = Double.parseDouble(String.valueOf(Cdltj));
+                DecimalFormat df = new DecimalFormat("###,###.##");
+                String DRdltj = df.format(DRdtj);
+                valor.setText(DRdltj);
             }
             chg++;
 
