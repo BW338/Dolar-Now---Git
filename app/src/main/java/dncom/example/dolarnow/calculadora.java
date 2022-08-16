@@ -10,6 +10,7 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,6 +29,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.concurrent.Delayed;
 
 public class calculadora extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -103,6 +105,18 @@ public class calculadora extends AppCompatActivity implements AdapterView.OnItem
 
             bottomNavigationView2.getMenu().getItem(2).setIcon(R.drawable.sound_on);
         }
+
+
+        ////////////////////------CLICK AUTOMATICO----------------
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+               new Content().execute();
+                tituloa.setText("DolarNow | ");
+                //    titulob.setText("valor al: " + horatx);
+            }
+        }, 1000);
+        //--------------------------------------------------------------
 
 
         bottomNavigationView2.setOnNavigationItemSelectedListener(
@@ -249,6 +263,26 @@ public class calculadora extends AppCompatActivity implements AdapterView.OnItem
                                                 String DRdlcd = df.format(DRdlc);
                                                 valor.setText(DRdlcd);
 
+                                            }
+                                        }if (tipo.getSelectedItem() == "Dolar Tarjeta") {
+
+                                            if (chg % 2 == 0) {
+                                                double Ddltj = Double.parseDouble(Ndtj.replace(",", "."));
+                                                int Ninput = parseInt(input.getText().toString());
+                                                double Cdltj = (Ninput / Ddltj);
+                                                double DRdtj = Double.parseDouble(String.valueOf(Cdltj));
+                                                DecimalFormat df = new DecimalFormat("###,###.##");
+                                                String DRdltj = df.format(DRdtj);
+                                                valor.setText(DRdltj);
+
+                                            } else {
+                                                double Ddltj = Double.parseDouble(Ndtj.replace(",", "."));
+                                                int Ninput = parseInt(input.getText().toString());
+                                                double Cdltj = (Ninput * Ddltj);
+                                                double DRdtj = Double.parseDouble(String.valueOf(Cdltj));
+                                                DecimalFormat df = new DecimalFormat("###,###.##");
+                                                String DRdltj = df.format(DRdtj);
+                                                valor.setText(DRdltj);
                                             }
                                         }
                                     }
@@ -694,6 +728,8 @@ public class calculadora extends AppCompatActivity implements AdapterView.OnItem
                     touch.play(sound, 1, 1, 1, 0, 0);
                 }
                 if (AppStatus.getInstance(calculadora.this).isOnline()) {
+                    new Content().execute();
+
                     montodlbl.setText(datx);
                     tituloa.setText("DolarNow | ");
                     titulob.setText("valor al: " + horatx);
@@ -727,6 +763,7 @@ public class calculadora extends AppCompatActivity implements AdapterView.OnItem
                 touch.play(sound, 1, 1, 1, 0, 0);
 
                 if (AppStatus.getInstance(calculadora.this).isOnline()) {
+                    new Content().execute();
 
                     montodlbl.setText(dmctx + " - " + dmvtx);
                     tituloa.setText("DolarNow | ");
@@ -759,6 +796,8 @@ public class calculadora extends AppCompatActivity implements AdapterView.OnItem
             case 5:
                 touch.play(sound, 1, 1, 1, 0, 0);
                 if (AppStatus.getInstance(calculadora.this).isOnline()) {
+                    new Content().execute();
+
                     montodlbl.setText(dlctx + " - " + dlvtx);
                     tituloa.setText("DolarNow | ");
                     titulob.setText("valor al: " + horatx);
@@ -788,9 +827,10 @@ public class calculadora extends AppCompatActivity implements AdapterView.OnItem
                 break;
 
             case 6:
-
                 touch.play(sound, 1, 1, 1, 0, 0);
                 if (AppStatus.getInstance(calculadora.this).isOnline()) {
+                    new Content().execute();
+
                     montodlbl.setText(dltjtx);
                     tituloa.setText("DolarNow | ");
                     titulob.setText("valor al: " + horatx);
@@ -821,8 +861,8 @@ public class calculadora extends AppCompatActivity implements AdapterView.OnItem
                 }
 
                 break;
-
         }
+
     }
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
