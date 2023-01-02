@@ -5,26 +5,29 @@
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo2"
-    tools:context="dncom.example.dolarnow.calculadora"
+    tools:context="com.example.dolarargentina.calculadora"
     tools:ignore="ExtraText">
 
     <include
         android:id="@+id/include"
         layout="@layout/action_bar"
         android:layout_width="match_parent"
-        android:layout_height="57dp" />
+        android:layout_height="57dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-1dp" />
 
     <TextView
         android:id="@+id/titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="sans-serif-smallcaps"
         android:text="calculad"
         android:textColor="@color/azul"
         android:textSize="50dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/arg"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include" />
 
     <TextView
@@ -43,44 +46,15 @@
         app:layout_constraintTop_toTopOf="@+id/titulo"
         app:layout_constraintVertical_bias="0.0" />
 
-    <EditText
-        android:id="@+id/input"
-        android:layout_width="149dp"
-        android:layout_height="wrap_content"
-        android:ems="20"
-        android:hint="00,00"
-        android:imeOptions="actionDone"
-        android:inputType="number"
-        android:paddingBottom="25dp"
-        android:text=""
-        android:textColor="@color/black"
-        android:textColorHint="#545657"
-        android:textSize="28dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView5"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toTopOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.285" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginBottom="60dp"
-        android:text="Importe: AR$"
-        android:textColor="@color/black"
-        android:textSize="28dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/arg"
         android:layout_width="68dp"
         android:layout_height="34dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="132dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView9"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView9"
         app:srcCompat="@drawable/arg" />
 
     <TextView
@@ -92,6 +66,7 @@
         android:textColor="@color/black"
         android:textSize="24dp"
         app:layout_constraintBottom_toTopOf="@+id/arg"
+        app:layout_constraintEnd_toEndOf="@+id/arg"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -105,6 +80,7 @@
         app:layout_constraintBottom_toTopOf="@+id/usa"
         app:layout_constraintEnd_toEndOf="@+id/usa" />
 
+
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
@@ -112,70 +88,69 @@
         android:text="ARS$"
         android:textColor="@color/black"
         android:textSize="26dp"
-        app:layout_constraintBottom_toBottomOf="@+id/arg"
-        app:layout_constraintStart_toEndOf="@+id/arg" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintStart_toEndOf="@+id/arg"
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
         android:paddingRight="5dp"
         android:text="USA$"
         android:textColor="@color/black"
         android:textSize="26dp"
-        app:layout_constraintBottom_toBottomOf="@+id/arg"
-        app:layout_constraintEnd_toStartOf="@+id/usa" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView9"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/textView9"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/usa"
         android:layout_width="58dp"
         android:layout_height="34dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/arg"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/textView10"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
         app:layout_constraintTop_toTopOf="@+id/textView10"
-        app:layout_constraintVertical_bias="0.75"
         app:srcCompat="@drawable/usa" />
+
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="51dp"
         android:layout_height="45dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="16dp"
         android:onClick="change"
-        app:layout_constraintBottom_toBottomOf="@+id/textView9"
-        app:layout_constraintEnd_toStartOf="@+id/textView10"
-        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintBottom_toTopOf="@+id/cardView6"
         app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toTopOf="@+id/textView9"
-        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/change" />
-
 
     <Spinner
         android:id="@+id/tipo"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/bg_spinner"
-        style="@style/estilo.sp"
         android:spinnerMode="dropdown"
-        app:layout_constraintEnd_toEndOf="@+id/cv1"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="@+id/cv1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titulo" />
-
 
     <View
         android:id="@+id/divider9"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="36dp"
         android:background="@color/gris"
         android:backgroundTint="@color/gris"
         android:outlineSpotShadowColor="@color/gris"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <View
@@ -185,24 +160,26 @@
         android:background="@color/gris"
         android:backgroundTint="@color/gris"
         android:outlineSpotShadowColor="@color/gris"
-        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintBottom_toTopOf="@+id/cardView6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.949" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="0.47" />
 
     <View
         android:id="@+id/divider11"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_marginTop="12dp"
         android:background="@color/gris"
         android:backgroundTint="@color/gris"
         android:outlineSpotShadowColor="@color/azul"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView7"
+        app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation2"
@@ -220,33 +197,25 @@
         app:menu="@menu/bottom_navigation_main2" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/cambio"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:onClick="change"
+        app:layout_constraintBottom_toTopOf="@+id/cardView7"
         app:layout_constraintEnd_toEndOf="@+id/cardView6"
         app:layout_constraintStart_toStartOf="@+id/cardView6"
-        app:layout_constraintTop_toBottomOf="@+id/cardView6"
-        app:srcCompat="@drawable/up" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:srcCompat="@drawable/down" />
+        app:srcCompat="@drawable/cambio" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
-        android:backgroundTint="@color/celestito"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/output"
         app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/cambio"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider11">
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -278,13 +247,12 @@
         android:id="@+id/cv1"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:backgroundTint="#9EC6E4"
         android:outlineAmbientShadowColor="@color/black"
         android:outlineSpotShadowColor="@color/black"
         app:cardBackgroundColor="@color/black"
         app:cardCornerRadius="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/divider10"
+        app:layout_constraintBottom_toTopOf="@+id/divider9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -308,7 +276,7 @@
 
             <TextView
                 android:id="@+id/montodlbl"
-                android:layout_width="wrap_content"
+                android:layout_width="229dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="20dp"
@@ -330,6 +298,65 @@
         app:layout_constraintTop_toTopOf="@+id/titulo"
         app:layout_constraintVertical_bias="0.538"
         app:srcCompat="@drawable/dn2" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView7"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/arg"
+        android:backgroundTint="@color/input"
+        app:cardCornerRadius="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/input"
+            android:layout_width="123dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="5dp"
+            android:ems="20"
+            android:hint="00,00"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:text=""
+            android:textColor="@color/black"
+            android:textColorHint="#545657"
+            android:textSize="28dp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="7dp"
+            android:layout_marginLeft="5dp"
+            android:text="Importe: AR$"
+            android:textColor="@color/black"
+            android:textSize="28dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/arrowi"
+        android:layout_width="35dp"
+        android:layout_height="45dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tipo"
+        app:layout_constraintEnd_toStartOf="@+id/tipo"
+        app:layout_constraintTop_toTopOf="@+id/tipo"
+        app:srcCompat="@drawable/arrowi" />
+
+    <ImageView
+        android:id="@+id/arrowd"
+        android:layout_width="35dp"
+        android:layout_height="45dp"
+        app:layout_constraintBottom_toBottomOf="@+id/arrowi"
+        app:layout_constraintStart_toEndOf="@+id/tipo"
+        app:layout_constraintTop_toTopOf="@+id/arrowi"
+        app:srcCompat="@drawable/arrowd" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.dolarnow">
+    package="com.example.dolarargentina">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -15,16 +15,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DolarNow">
         <activity
-            android:name="dncom.example.dolarnow.MainActivity"
+            android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             />
         <activity
-            android:name="dncom.example.dolarnow.calculadora"
+            android:name=".calculadora"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name="dncom.example.dolarnow.splash"
+            android:name=".splash"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>

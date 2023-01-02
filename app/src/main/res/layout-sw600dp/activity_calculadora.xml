@@ -5,7 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo2"
-    tools:context="dncom.example.dolarnow.calculadora"
+    tools:context="com.example.dolarargentina.calculadora"
     tools:ignore="ExtraText">
 
     <include
@@ -224,7 +224,7 @@
     />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/cambio"
         android:layout_width="62dp"
         android:layout_height="63dp"
         app:layout_constraintEnd_toEndOf="@+id/cardView6"
@@ -236,9 +236,9 @@
         android:id="@+id/imageView5"
         android:layout_width="61dp"
         android:layout_height="54dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/cambio"
+        app:layout_constraintStart_toStartOf="@+id/cambio"
+        app:layout_constraintTop_toBottomOf="@+id/cambio"
         app:srcCompat="@drawable/down" />
 
     <androidx.cardview.widget.CardView

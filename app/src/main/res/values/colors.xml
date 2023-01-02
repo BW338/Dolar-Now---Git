@@ -16,7 +16,8 @@
     <color name="celeste">#E6EFF4</color>
     <color name="celestito">#CEE3F1</color>
     <color name="gris">#979A9C</color>
-
+    <color name="input">#DEF3DC</color>
+    <color name="output">#DFCEC3</color>
 
 
 </resources>

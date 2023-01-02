@@ -3,8 +3,28 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Guido/AndroidStudioProjects/Dolar-Now---Git/app/src/main/res/drawable/arrowd.xml" value="0.30427350427350425" />
+        <entry key="..\:/Users/Guido/AndroidStudioProjects/Dolar-Now---Git/app/src/main/res/drawable/arrowi.xml" value="0.30427350427350425" />
+        <entry key="..\:/Users/Guido/AndroidStudioProjects/Dolar-Now---Git/app/src/main/res/drawable/bg_spinner.xml" value="0.30427350427350425" />
         <entry key="..\:/Users/Guido/AndroidStudioProjects/Dolar-Now---Git/app/src/main/res/layout-sw600dp/activity_main.xml" value="0.5" />
-        <entry key="..\:/Users/Guido/AndroidStudioProjects/Dolar-Now---Git/app/src/main/res/layout/activity_main.xml" value="0.3546875" />
+        <entry key="..\:/Users/Guido/AndroidStudioProjects/Dolar-Now---Git/app/src/main/res/layout/action_bar.xml" value="0.30675675675675673" />
+        <entry key="..\:/Users/Guido/AndroidStudioProjects/Dolar-Now---Git/app/src/main/res/layout/activity_calculadora.xml" value="0.33" />
+        <entry key="..\:/Users/Guido/AndroidStudioProjects/Dolar-Now---Git/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Guido/AndroidStudioProjects/Dolar-Now---Git/app/src/main/res/layout/activity_splash.xml" value="0.29102564102564105" />
+        <entry key="..\:/Users/Guido/AndroidStudioProjects/Dolar-Now---Git/app/src/main/res/layout/spinner.xml" value="0.29102564102564105" />
+        <entry key="..\:/Users/Guido/AndroidStudioProjects/Dolar-Now---Git/app/src/main/res/menu/bottom_navigation_main.xml" value="0.29102564102564105" />
+        <entry key="..\:/Users/Guido/AndroidStudioProjects/Dolar-Now---Git/app/src/main/res/menu/bottom_navigation_main2.xml" value="0.29102564102564105" />
+        <entry key="..\:/Users/Guido/AndroidStudioProjects/Dolar-Now---Git/app/src/main/res/menu/menu.xml" value="0.29102564102564105" />
+        <entry key="..\:/Users/Guido/AndroidStudioProjects/Dolar-Now---Git/app/src/main/res/mipmap-anydpi-v26/IconoDN.xml" value="0.3207207207207207" />
+        <entry key="..\:/Users/Guido/AndroidStudioProjects/Dolar-Now---Git/app/src/main/res/mipmap-anydpi-v26/IconoDN_round.xml" value="0.18468468468468469" />
+        <entry key="..\:/Users/Guido/AndroidStudioProjects/Dolar-Now---Git/app/src/main/res/mipmap-anydpi-v26/Iconodn.xml" value="0.3141025641025641" />
+        <entry key="..\:/Users/Guido/AndroidStudioProjects/Dolar-Now---Git/app/src/main/res/mipmap-anydpi-v26/Iconodn_round.xml" value="0.3141025641025641" />
+        <entry key="..\:/Users/Guido/AndroidStudioProjects/Dolar-Now---Git/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.30427350427350425" />
+        <entry key="..\:/Users/Guido/AndroidStudioProjects/Dolar-Now---Git/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.30427350427350425" />
+        <entry key="..\:/Users/Guido/AndroidStudioProjects/Dolar-Now---Git/app/src/main/res/mipmap-anydpi-v26/icono_dn.xml" value="0.30427350427350425" />
+        <entry key="..\:/Users/Guido/AndroidStudioProjects/Dolar-Now---Git/app/src/main/res/mipmap-anydpi-v26/icono_dn_round.xml" value="0.30427350427350425" />
+        <entry key="..\:/Users/Guido/AndroidStudioProjects/Dolar-Now---Git/app/src/main/res/mipmap-anydpi-v26/iconodn.xml" value="0.3141025641025641" />
+        <entry key="..\:/Users/Guido/AndroidStudioProjects/Dolar-Now---Git/app/src/main/res/mipmap-anydpi-v26/iconodn_round.xml" value="0.3141025641025641" />
         <entry key="..\:/Users/Guido/AndroidStudioProjects/DolarNow/app/src/main/res/drawable/DN_foreground.xml" value="0.37083333333333335" />
         <entry key="..\:/Users/Guido/AndroidStudioProjects/DolarNow/app/src/main/res/drawable/bg_spinner.xml" value="0.37083333333333335" />
         <entry key="..\:/Users/Guido/AndroidStudioProjects/DolarNow/app/src/main/res/drawable/calcular.xml" value="0.37083333333333335" />

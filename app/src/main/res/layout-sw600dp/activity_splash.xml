@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/fondo2"
     android:fitsSystemWindows="false"
-    tools:context="dncom.example.dolarnow.splash"
+    tools:context="com.example.dolarargentina.splash"
     tools:openDrawer="start">
 
     <include
